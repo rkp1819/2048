@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048</title>
+    <!-- web js imports -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- local css imports -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- local js imports -->
+    <script src="./js/index.js"></script>
+    <script src="./js/app.js"></script>
+  </head>
+  <body>
+    <div id="htmlBody">
+      <center>
+        <h1 id="main-header" class="main-heading-pre">
+          Press any key to Start the Game!!!!
+        </h1>
+      </center>
+      <hr class="main-heading-divider" />
+      <!-- Main game grid -->
+      <!-- <div id="leftbox">
+        <div class="scores">
+          <h4>Scores</h4>
+        </div>
+      </div> -->
+      <div id="middlebox">
+        <center>
+          <div id="game-grid" class="grid-container"></div>
+        </center>
+      </div>
+      <!-- <div id="rightbox"><div id="user-action"></div></div> -->
+    </div>
+
+    <div>
+      <center>
+        <h1 id="game-over-text" class="game-over-text-pre">
+          Game Over, Press any key to <em>play again!</em>
+        </h1>
+      </center>
+    </div>
+  </body>
+</html>
