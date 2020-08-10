@@ -20,6 +20,9 @@ $(document).ready(function () {
     $(document).keypress(function () {
       start();
     });
+    $(document).on("dblclick", function(){
+      start();
+    });
   }
 });
 
@@ -146,6 +149,9 @@ reset = function () {
   started = false;
   if (!started) {
     $(document).keypress(function () {
+      start();
+    });
+    $(document).on("dblclick",function(){
       start();
     });
   }
