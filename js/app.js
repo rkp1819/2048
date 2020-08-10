@@ -25,7 +25,46 @@ $(document).ready(function () {
 
 // Reading User Actions
 
+
 $(document).ready(function () {
+  $(document).on("swipeleft",function(event){
+    if(started){
+      prev = current;
+      current = "ArrowLeft";
+      left();
+      render();
+    }
+    return;
+  });
+  $(document).on("swiperight",function(){
+    if(started){
+      prev = current;
+      current = "ArrowRight";
+      right();
+      render();
+    }
+    return;
+  });
+  $(document).on("swipeup",function(){
+    if(started){
+      prev = current;
+      current = "ArrowUp";
+      up();
+      render();
+    }
+    return;
+  });
+  $(document).on("swipedown",function(){
+    if(started){
+      prev = current;
+      current = "ArrowDown";
+      down();
+      render();
+    }
+    return;
+  });
+
+
   $(document).keyup(function (event) {
     $("#user-action").html("Recent Action <h2>" + event.key + "</h2>");
 
