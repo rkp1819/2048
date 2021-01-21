@@ -20,7 +20,7 @@ $(document).ready(function () {
     $(document).keypress(function () {
       start();
     });
-    $(document).on("dblclick", function(){
+    $(document).on("dblclick", function () {
       start();
     });
   }
@@ -28,10 +28,9 @@ $(document).ready(function () {
 
 // Reading User Actions
 
-
 $(document).ready(function () {
-  $(document).on("swipeleft",function(event){
-    if(started){
+  $(document).on("swipeleft", function (event) {
+    if (started) {
       prev = current;
       current = "ArrowLeft";
       left();
@@ -39,8 +38,8 @@ $(document).ready(function () {
     }
     return;
   });
-  $(document).on("swiperight",function(){
-    if(started){
+  $(document).on("swiperight", function () {
+    if (started) {
       prev = current;
       current = "ArrowRight";
       right();
@@ -48,8 +47,8 @@ $(document).ready(function () {
     }
     return;
   });
-  $(document).on("swipeup",function(){
-    if(started){
+  $(document).on("swipeup", function () {
+    if (started) {
       prev = current;
       current = "ArrowUp";
       up();
@@ -57,8 +56,8 @@ $(document).ready(function () {
     }
     return;
   });
-  $(document).on("swipedown",function(){
-    if(started){
+  $(document).on("swipedown", function () {
+    if (started) {
       prev = current;
       current = "ArrowDown";
       down();
@@ -66,7 +65,6 @@ $(document).ready(function () {
     }
     return;
   });
-
 
   $(document).keyup(function (event) {
     $("#user-action").html("Recent Action <h2>" + event.key + "</h2>");
@@ -103,8 +101,8 @@ render = function () {
   matrix.forEach((row) => {
     row.forEach((slotValue) => {
       if (slotValue) {
-        var pow=0;
-        var color="";
+        var pow = 0;
+        var color = "";
         if (slotValue && slotValue <= 16) {
           pow = slotValue * 16 - 1;
           color = "rgb(0, " + pow + ",0);";
@@ -151,7 +149,7 @@ reset = function () {
     $(document).keypress(function () {
       start();
     });
-    $(document).on("dblclick",function(){
+    $(document).on("dblclick", function () {
       start();
     });
   }
@@ -460,4 +458,57 @@ function down() {
     gameOver();
   }
   if (win) won();
+}
+
+document.addEventListener("touchstart", handleTouchStart, false);
+document.addEventListener("touchmove", handleTouchMove, false);
+
+var xDown = null;
+var yDown = null;
+
+function getTouches(evt) {
+  return (
+    evt.touches || // browser API
+    evt.originalEvent.touches
+  ); // jQuery
+}
+
+function handleTouchStart(evt) {
+  const firstTouch = getTouches(evt)[0];
+  xDown = firstTouch.clientX;
+  yDown = firstTouch.clientY;
+}
+
+function handleTouchMove(evt) {
+  if (!xDown || !yDown) {
+    return;
+  }
+
+  var xUp = evt.touches[0].clientX;
+  var yUp = evt.touches[0].clientY;
+
+  var xDiff = xDown - xUp;
+  var yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    /*most significant*/
+    if (xDiff > 0) {
+      /* left swipe */
+      $(document).trigger("swipeleft");
+    } else {
+      /* right swipe */
+      $(document).trigger("swiperight");
+    }
+  } else {
+    if (yDiff > 0) {
+      /* up swipe */
+      $(document).trigger("swipeup");
+    } else {
+      /* down swipe */
+      $(document).trigger("swipedown");
+    }
+  }
+  /* reset values */
+  xDown = null;
+  yDown = null;
 }
