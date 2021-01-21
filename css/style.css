@@ -1,18 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: #b3aa90;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+#htmlBody {
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  background-image: linear-gradient(45deg, dodgerblue, purple, red) !important;
 }
 
 .main-heading-pre {
+  padding: 20px;
   font-family: cursive;
   font-size: 50px;
-  color: red;
+  color: white;
   text-shadow: 2px 2px 4px #000000;
 }
 
 .main-heading-post {
+  padding: 20px;
   font-family: fantasy;
-  font-size: 50px;
-  color: white;
+  font-size: 80px;
+  background-color: tomato;
   text-shadow: 2px 2px 4px #000000;
 }
 
@@ -21,25 +36,17 @@ body {
   box-shadow: 2px 2px 10px #000000;
 }
 
-/* left */
-#leftbox {
-  float: left;
-  padding: 5px;
-  background: rgb(196, 199, 160);
-  width: 19%;
-}
-
 /* middle */
 #middlebox {
-  float: left;
-  width: 100%;
+  display: none;
 }
 
 .grid-container {
   display: grid;
+  background-color: #f9f9f9;
   grid-template-columns: auto auto auto auto;
-  padding: 10px;
-  margin: 20px;
+  padding: 20px;
+  margin: 20px auto;
   grid-gap: 10px;
   height: min-content;
   width: min-content;
@@ -57,15 +64,15 @@ body {
   text-shadow: 1px 1px 2px #000000;
 }
 
-/* right */
-#rightbox {
-  float: right;
-  padding: 5px;
-  background: rgb(196, 199, 160);
-  width: 19%;
-}
-
 /* game  */
+
+#game-over {
+  position: absolute;
+  left: 0;
+  top: 40vh;
+  width: 100%;
+  text-align: center;
+}
 
 .game-over {
   background-color: #b3aa90;
@@ -73,16 +80,16 @@ body {
 }
 
 .game-over-text {
+  padding: 20px;
+  width: 100%;
+  background-color: darkorange;
   color: whitesmoke;
   font-family: "Courier New", Courier, monospace;
   font-size: 50px;
   text-shadow: 2px 2px 4px #000000;
   display: block;
-  position: absolute;
-  margin: 15%;
 }
 .game-over-text-pre {
-  position: absolute;
   margin: auto;
   display: none;
 }

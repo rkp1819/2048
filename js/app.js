@@ -1,4 +1,4 @@
-var matrix = [
+let matrix = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -20,7 +20,7 @@ $(document).ready(function () {
     $(document).keypress(function () {
       start();
     });
-    $(document).on("dblclick", function () {
+    $(document).on("click", function () {
       start();
     });
   }
@@ -56,7 +56,8 @@ $(document).ready(function () {
     }
     return;
   });
-  $(document).on("swipedown", function () {
+  $(document).on("swipedown", function (event) {
+    event.preventDefault();
     if (started) {
       prev = current;
       current = "ArrowDown";
@@ -67,7 +68,7 @@ $(document).ready(function () {
   });
 
   $(document).keyup(function (event) {
-    $("#user-action").html("Recent Action <h2>" + event.key + "</h2>");
+    $("#user-action").html("Recent Action <h2>" + event.key.slice(5) + "</h2>");
 
     if (event.key == "ArrowUp" && started) {
       prev = current;
@@ -149,7 +150,7 @@ reset = function () {
     $(document).keypress(function () {
       start();
     });
-    $(document).on("dblclick", function () {
+    $(document).on("click", function () {
       start();
     });
   }
@@ -157,6 +158,7 @@ reset = function () {
 
 start = function () {
   started = true;
+  $("#middlebox").show();
   $("#htmlBody").removeClass("game-over");
   $("#game-over-text").addClass("game-over-text-pre");
   $("#game-over-text").removeClass("game-over-text");
