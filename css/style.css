@@ -4,12 +4,20 @@
 }
 
 body {
-  max-height: 90vh;
+  max-height: 100vh;
   overflow: hidden;
+}
+@media (max-width: 1000px) {
+  body {
+    max-height: 90vh;
+  }
+  #htmlBody {
+    height: 90vh;
+  }
 }
 
 #htmlBody {
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   text-align: center;
   background-image: linear-gradient(45deg, dodgerblue, purple, red) !important;
@@ -53,14 +61,16 @@ body {
 }
 
 .grid-item {
+  display: grid;
+  place-items: center;
   background-color: #0c0622;
   border: 1px solid rgba(12, 1, 61, 0.8);
   padding: 20px;
-  font-size: 40px;
-  height: 40px;
-  width: 40px;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
   color: white;
-  text-align: center;
+  /* text-align: center; */
   text-shadow: 1px 1px 2px #000000;
 }
 
